@@ -41,10 +41,11 @@ def create_course(
 
 @router.get("/mine", response_model=list[schemas.CourseOut])
 def get_my_courses(current_user=Depends(oauth2.get_current_user)):
+
     cursor.execute(
         """
-                   SELECT * FROM courses WHERE author_id = %s
-                   """,
+        SELECT * FROM courses WHERE author_id = %s
+        """,
         (current_user.id,),
     )
 
@@ -259,18 +260,24 @@ def remove_account_course(
 @router.get(
     "/assigned",
     status_code=status.HTTP_200_OK,
-    response_model=list[schemas.CourseOut],
 )
 def assigned_courses(
     current_user=Depends(oauth2.get_current_user),
 ):
     cursor.execute(
         """
-                   SELECT courses.id, courses.name, courses.author_id FROM courses JOIN accounts_courses ON courses.id = accounts_courses.course_id WHERE accounts_courses.account_id = %s
-                   """,
+        SELECT * FROM view_accounts_assigned_to_course WHERE assigned_account_id = %s
+        """,
         (current_user.id,),
     )
 
     course = cursor.fetchall()
 
     return course
+
+
+# TODO
+# statystyki kursu
+# statystyki usera
+# CRUD quiz + statystyki
+# CRUD zadania + statystyki

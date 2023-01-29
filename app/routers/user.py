@@ -10,7 +10,6 @@ def create_user(user: schemas.UserCreate):
 
     hashed_password = utils.hash(user.password)
     user.password = hashed_password
-
     cursor.execute(
         """
             INSERT INTO accounts (username, email, password, role) VALUES (%s, %s, %s, %s) RETURNING *
