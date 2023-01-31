@@ -6,7 +6,7 @@ from ..schemas import Roles
 router = APIRouter(prefix="/courses", tags=["Courses"])
 
 
-@router.get("", response_model=list[schemas.CourseOut])
+@router.get("/", response_model=list[schemas.CourseOut])
 def get_courses():
     cursor.execute(
         """
@@ -39,7 +39,7 @@ def create_course(
     return new_course
 
 
-@router.get("/mine", response_model=list[schemas.CourseOut])
+@router.get("/owned/", response_model=list[schemas.CourseOut])
 def get_my_courses(current_user=Depends(oauth2.get_current_user)):
 
     cursor.execute(
@@ -54,7 +54,7 @@ def get_my_courses(current_user=Depends(oauth2.get_current_user)):
 
 
 @router.post(
-    "/users",
+    "/users/",
     status_code=status.HTTP_201_CREATED,
     response_model=schemas.AccountCourseLink,
 )
@@ -227,9 +227,9 @@ def leave_course(
     return link
 
 
-@router.post(
-    "/remove-users",
-    status_code=status.HTTP_202_ACCEPTED,
+@router.delete(
+    "/users/",
+    status_code=status.HTTP_200_OK,
     response_model=schemas.AccountCourseLink,
 )
 def remove_account_course(
@@ -258,7 +258,7 @@ def remove_account_course(
 
 
 @router.get(
-    "/assigned",
+    "/assigned/",
     status_code=status.HTTP_200_OK,
 )
 def assigned_courses(
@@ -279,5 +279,4 @@ def assigned_courses(
 # TODO
 # statystyki kursu
 # statystyki usera
-# CRUD quiz + statystyki
 # CRUD zadania + statystyki

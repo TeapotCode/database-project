@@ -26,9 +26,9 @@ def upgrade() -> None:
             points float DEFAULT 1,
             task_question text,
             task_description text,
-            question_type_id integer REFERENCES question_types(id),
-            possible_answers text,
-            correct_answer text
+            question_type varchar(255) REFERENCES question_types(type),
+            possible_answers text ARRAY,
+            correct_answer text ARRAY
         );
         """
     )

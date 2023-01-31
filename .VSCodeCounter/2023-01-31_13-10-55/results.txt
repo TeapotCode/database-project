@@ -1,0 +1,37 @@
+Date : 2023-01-31 13:10:55
+Directory : /Users/teapot/projects/database_project/app
+Total : 11 files,  673 codes, 124 comments, 233 blanks, all 1030 lines
+
+Languages
++----------+------------+------------+------------+------------+------------+
+| language | files      | code       | comment    | blank      | total      |
++----------+------------+------------+------------+------------+------------+
+| Python   |         11 |        673 |        124 |        233 |      1,030 |
++----------+------------+------------+------------+------------+------------+
+
+Directories
++-----------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                            | files      | code       | comment    | blank      | total      |
++-----------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                               |         11 |        673 |        124 |        233 |      1,030 |
+| . (Files)                                                       |          6 |        239 |          5 |         98 |        342 |
+| routers                                                         |          5 |        434 |        119 |        135 |        688 |
++-----------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++-----------------------------------------------------------------+----------+------------+------------+------------+------------+
+| filename                                                        | language | code       | comment    | blank      | total      |
++-----------------------------------------------------------------+----------+------------+------------+------------+------------+
+| /Users/teapot/projects/database_project/app/config.py           | Python   |         13 |          0 |          6 |         19 |
+| /Users/teapot/projects/database_project/app/database.py         | Python   |         23 |          0 |          4 |         27 |
+| /Users/teapot/projects/database_project/app/main.py             | Python   |         17 |          0 |          7 |         24 |
+| /Users/teapot/projects/database_project/app/oauth2.py           | Python   |         49 |          5 |         23 |         77 |
+| /Users/teapot/projects/database_project/app/routers/auth.py     | Python   |         23 |          2 |         12 |         37 |
+| /Users/teapot/projects/database_project/app/routers/course.py   | Python   |        194 |         31 |         58 |        283 |
+| /Users/teapot/projects/database_project/app/routers/question.py | Python   |         76 |         30 |         21 |        127 |
+| /Users/teapot/projects/database_project/app/routers/quiz.py     | Python   |         85 |         39 |         21 |        145 |
+| /Users/teapot/projects/database_project/app/routers/user.py     | Python   |         56 |         17 |         23 |         96 |
+| /Users/teapot/projects/database_project/app/schemas.py          | Python   |        131 |          0 |         52 |        183 |
+| /Users/teapot/projects/database_project/app/utils.py            | Python   |          6 |          0 |          6 |         12 |
+| Total                                                           |          |        673 |        124 |        233 |      1,030 |
++-----------------------------------------------------------------+----------+------------+------------+------------+------------+

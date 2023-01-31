@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from .routers import quiz, user, auth, course
+from .routers import quiz, user, auth, course, question
 
 
 app = FastAPI()
@@ -20,3 +20,4 @@ app.include_router(user.router)
 app.include_router(auth.router)
 app.include_router(course.router)
 app.include_router(quiz.router)
+app.include_router(question.router)

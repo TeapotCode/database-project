@@ -109,19 +109,77 @@ class AccountCourseCreate(BaseModel):
     course_id: int
 
 
-class QuizCreate(BaseModel):
+class QuizBase(BaseModel):
     name: str
-    author_id: int | None
+    author_id: int | None = None
     course_id: int
     category: Categories
     difficulty: Difficulties
     description: str
-    password: str | None
-    attempts: int | None
+    attempts: int | None = 1
     time_open: datetime
     time_close: datetime
-    time_to_complete: timedelta
+    time_to_complete: timedelta | None
 
 
-class QuizOut(QuizCreate):
+class QuizCreate(QuizBase):
+    password: str | None = None
+
+
+class QuizOut(QuizBase):
     id: int
+
+
+class QuizUpdate(BaseModel):
+    name: Optional[str] = None
+    author_id: Optional[int] = None
+    course_id: Optional[int] = None
+    category: Optional[Categories] = None
+    difficulty: Optional[Difficulties] = None
+    description: Optional[str] = None
+    password: Optional[str] = None
+    attempts: Optional[int] = None
+    time_open: Optional[datetime] = None
+    time_close: Optional[datetime] = None
+    time_to_complete: Optional[timedelta] = None
+
+
+class QuestionTypes(str, Enum):
+    single = "Single choice"
+    multiple = "Multiple choice"
+    open = "Open"
+
+
+class QuestionBase(BaseModel):
+    author_id: int | None
+    points: int = 1
+    task_question: str
+    task_description: str
+    question_type: QuestionTypes
+    possible_answers: list[str]
+
+    class Config:
+        orm_mode = True
+
+
+class QuestionIn(QuestionBase):
+    correct_answer: list[str]
+
+
+class QuestionOut(QuestionBase):
+    id: int
+
+
+class QuestionInDB(QuestionBase):
+    id: int
+    correct_answer: list[str]
+
+
+class QuestionUpdate(BaseModel):
+    author_id: int = None
+    points: int = None
+    task_question: str = None
+    task_description: str = None
+    question_type: QuestionTypes = None
+    possible_answers: list[str] = None
+    correct_answer: list[str] = None
